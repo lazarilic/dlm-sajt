@@ -54,11 +54,14 @@ a:hover{ color: var(--dlm-blue); }
   min-width: 0;
 }
 .brand__logo{
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  object-fit: cover;
-  border: var(--border);
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  object-fit: contain;         
+  background: #fff;            
+  padding: 6px;               
+  border: 1px solid rgba(17,17,17,.12);
+  box-shadow: 0 6px 16px rgba(17,17,17,.10);
 }
 .brand__name{
   font-weight: 800;
