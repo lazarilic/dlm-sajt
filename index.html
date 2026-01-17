@@ -192,7 +192,7 @@
       const title = `${g.city} — ${g.venue}`;
       const meta = [g.notes].filter(Boolean).join(" • ");
 
-      const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted">—</span>`;
+      const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted"></span>`;
       const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
 
       return `
