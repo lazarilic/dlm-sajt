@@ -332,3 +332,43 @@ a:hover{ color: var(--dlm-blue); }
     justify-content: space-between;
   }
 }
+
+.gig__actions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:flex-end;
+}
+.gig__link--muted{
+  color: var(--dlm-gray);
+  border-bottom: none;
+  font-weight: 700;
+}
+
+.archive{
+  margin-top: 14px;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.archive__summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 14px;
+  font-weight: 800;
+  color: var(--dlm-blue);
+}
+.archive__summary::-webkit-details-marker{ display:none; }
+.archive__content{
+  padding: 0 14px 14px;
+  border-top: var(--border);
+}
+
+.yearblock{ margin-top: 12px; }
+.yearblock__title{
+  font-weight: 900;
+  color: var(--dlm-black);
+  margin: 10px 0;
+}
