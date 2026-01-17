@@ -169,11 +169,7 @@ a:hover{ color: var(--dlm-blue); }
   border-top: var(--border);
   border-bottom: var(--border);
 }
-.section__title{
-  margin: 0 0 6px;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-}
+
 .section__lead{
   margin: 0 0 14px;
   color: var(--dlm-gray);
