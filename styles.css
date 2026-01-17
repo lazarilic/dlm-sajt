@@ -46,11 +46,10 @@ a:hover{ color: var(--dlm-blue); }
   padding: 12px 0;
 }
 
-.brand{
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .brand_logo {
