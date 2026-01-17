@@ -26,17 +26,51 @@
     </header>
 
     <main id="top">
+      <section id="gigs" class="section">
+        <div class="container">
+          <h2 class="section__title">Koncerti</h2>
+          <p class="section__lead">Predstojeće svirke + arhiva po godinama.</p>
+
+          <div class="card">
+            <h3 class="card__title">Predstojeće</h3>
+            <div id="gigs-upcoming" class="gigs"></div>
+            <p id="gigs-empty" class="card__text small" style="display:none;">
+              Trenutno nema najavljenih svirki. Pratite nas za novosti.
+            </p>
+          </div>
+
+          <details class="archive" id="gigs-archive">
+            <summary class="archive__summary">Prošli koncerti</summary>
+
+            <div class="archive__content">
+              <div class="archive__head">
+                <div class="archive__title">Po godinama</div>
+                <a
+                  href="javascript:void(0)"
+                  class="archive__toggle"
+                  id="archive-collapse-all"
+                  style="display:none;"
+                >
+                </a>
+              </div>
+
+              <div id="gigs-past"></div>
+            </div>
+          </details>
+        </div>
+      </section>
+
       <!-- HERO -->
       <section class="hero">
         <div class="container hero__inner">
           <p class="badge">FUNK • ROCK</p>
           <p class="hero__subtitle">
-          „Stalno rat, stalno rat; Stalno pepel in kri; Uvek isti rat; Uvek drugi mir“
+          „Uvek isti rat - Uvek drugi mir“
           </p>
 
           <div class="cta">
-            <a class="btn btn--primary" href="#music">▶ Listen</a>
-            <a class="btn btn--outline" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn--primary" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn--outline" href="#music">▶ Muzika</a>
           </div>
 
           <div class="quicklinks">
@@ -48,36 +82,6 @@
           </div>
         </div>
       </section>
-
-     <section id="gigs" class="section">
-    <div class="container">
-      <h2 class="section__title">Koncerti</h2>
-      <p class="section__lead">Predstojeće svirke + arhiva po godinama.</p>
-
-      <div class="card">
-        <h3 class="card__title">Predstojeće</h3>
-        <div id="gigs-upcoming" class="gigs"></div>
-        <p id="gigs-empty" class="card__text small" style="display:none;">
-          Trenutno nema najavljenih svirki. Pratite nas za novosti.
-        </p>
-      </div>
-
-      <details class="archive" id="gigs-archive">
-      <summary class="archive__summary">Prošli koncerti</summary>
-
-  <div class="archive__content">
-    <div class="archive__head">
-      <div class="archive__title">Po godinama</div>
-      <a href="javascript:void(0)" class="archive__toggle" id="archive-collapse-all" style="display:none;">
-      zatvori sve
-      </a>
-    </div>
-
-    <div id="gigs-past"></div>
-  </div>
-</details>
-    </div>
-  </section>
 
       <!-- MUSIC -->
       <section id="music" class="section">
