@@ -53,16 +53,17 @@ a:hover{ color: var(--dlm-blue); }
   text-decoration:none;
   min-width: 0;
 }
-.brand__logo{
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  object-fit: contain;         
-  background: #fff;            
-  padding: 6px;               
-  border: 1px solid rgba(17,17,17,.12);
-  box-shadow: 0 6px 16px rgba(17,17,17,.10);
+
+.brand_logo {
+  display: flex;
+  align-items: center;
 }
+
+.brand_logo img {
+  height: 42px;
+  width: auto;
+}
+
 .brand__name{
   font-weight: 800;
   letter-spacing: -0.02em;
