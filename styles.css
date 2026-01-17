@@ -47,21 +47,15 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  min-width: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .brand_logo {
   display: flex;
   align-items: center;
-}
-
-.brand_logo img {
-  height: 42px;
-  width: auto;
 }
 
 .brand__name{
@@ -451,4 +445,12 @@ a:hover{ color: var(--dlm-blue); }
 .archive__content{
   padding: 12px 14px 14px;
   border-top: var(--border);
+}
+
+.brand__logo{
+  height: 42px;
+  width: auto !important;
+  max-width: none !important;
+  display: block;
+  flex: 0 0 auto;
 }
