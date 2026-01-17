@@ -68,7 +68,7 @@
   <div class="archive__content">
     <div class="archive__head">
       <div class="archive__title">Po godinama</div>
-      <a href="#" class="archive__toggle" id="archive-collapse-all">
+      <a href="#" class="archive__toggle" id="archive-collapse-all" style="display:none;">
       zatvori sve
       </a>
     </div>
@@ -285,9 +285,12 @@
           if (collapseAllBtn) {
           collapseAllBtn.style.display = "inline-flex";
 
-          collapseAllBtn.onclick = () => {
+          collapseAllBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
           document.querySelectorAll(".year[open]").forEach(d => d.removeAttribute("open"));
-            };
+            });
           }
         }
       } catch (e) {
