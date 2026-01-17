@@ -1,284 +1,307 @@
-<!doctype html>
-<html lang="sr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deca Loših Muzičara</title>
-  <meta name="description" content="Deca Loših Muzičara — funk/rock bend. Muzika, koncerti, video i kontakt." />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <!doctype html>
+  <html lang="sr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deca Loših Muzičara</title>
+    <meta name="description" content="Deca Loših Muzičara — funk/rock bend. Muzika, koncerti, video i kontakt." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Početna">
-        <img class="brand__logo" src="assets/logo.png" alt="DLM logo" />
-        <span class="brand__name">Deca Loših Muzičara</span>
-      </a>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="Početna">
+          <img class="brand__logo" src="assets/logo.png" alt="DLM logo" />
+          <span class="brand__name">Deca Loših Muzičara</span>
+        </a>
 
-      <nav class="nav" aria-label="Glavna navigacija">
-        <a class="nav__link" href="#music">Muzika</a>
-        <a class="nav__link" href="#video">Video</a>
-        <a class="nav__link" href="#gigs">Koncerti</a>
-        <a class="nav__link" href="#contact">Kontakt</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <p class="badge">FUNK • ROCK</p>
-        <h1 class="hero__title">Deca Loših Muzičara</h1>
-        <p class="hero__subtitle">
-        Test
-        </p>
-
-        <div class="cta">
-          <a class="btn btn--primary" href="#music">▶ Listen</a>
-          <a class="btn btn--outline" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-
-        <div class="quicklinks">
-          <a class="quicklinks__item" href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
-          <span class="dot">•</span>
-          <a class="quicklinks__item" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-          <span class="dot">•</span>
-          <a class="quicklinks__item" href="mailto:info@liniacontra.rs">info@liniacontra.rs</a>
-        </div>
+        <nav class="nav" aria-label="Glavna navigacija">
+          <a class="nav__link" href="#music">Muzika</a>
+          <a class="nav__link" href="#video">Video</a>
+          <a class="nav__link" href="#gigs">Koncerti</a>
+          <a class="nav__link" href="#contact">Kontakt</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-   <section id="gigs" class="section">
-  <div class="container">
-    <h2 class="section__title">Koncerti</h2>
-    <p class="section__lead">Predstojeće svirke + arhiva po godinama.</p>
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero__inner">
+          <p class="badge">FUNK • ROCK</p>
+          <h1 class="hero__title">Deca Loših Muzičara</h1>
+          <p class="hero__subtitle">
+          Test
+          </p>
 
-    <div class="card">
-      <h3 class="card__title">Predstojeće</h3>
-      <div id="gigs-upcoming" class="gigs"></div>
-      <p id="gigs-empty" class="card__text small" style="display:none;">
-        Trenutno nema najavljenih svirki. Pratite nas za novosti.
-      </p>
-    </div>
+          <div class="cta">
+            <a class="btn btn--primary" href="#music">▶ Listen</a>
+            <a class="btn btn--outline" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          </div>
 
-    <details class="archive" id="gigs-archive">
-      <summary class="archive__summary">Prikaži prošle koncerte</summary>
+          <div class="quicklinks">
+            <a class="quicklinks__item" href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
+            <span class="dot">•</span>
+            <a class="quicklinks__item" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+            <span class="dot">•</span>
+            <a class="quicklinks__item" href="mailto:info@liniacontra.rs">info@liniacontra.rs</a>
+          </div>
+        </div>
+      </section>
+
+     <section id="gigs" class="section">
+    <div class="container">
+      <h2 class="section__title">Koncerti</h2>
+      <p class="section__lead">Predstojeće svirke + arhiva po godinama.</p>
+
+      <div class="card">
+        <h3 class="card__title">Predstojeće</h3>
+        <div id="gigs-upcoming" class="gigs"></div>
+        <p id="gigs-empty" class="card__text small" style="display:none;">
+          Trenutno nema najavljenih svirki. Pratite nas za novosti.
+        </p>
+      </div>
+
+      <div class="archive" id="gigs-archive">
+      <div class="archive__head">
+      <h3 class="archive__title">Prošli koncerti</h3>
+      <button class="archive__toggle" type="button" id="archive-collapse-all" style="display:none;">
+        Collapse all
+      </button>
+      </div>
       <div class="archive__content" id="gigs-past"></div>
-    </details>
-  </div>
-</section>
+      </div>
+    </div>
+  </section>
 
-    <!-- MUSIC -->
-    <section id="music" class="section">
-      <div class="container">
-        <h2 class="section__title">Muzika</h2>
-        <p class="section__lead">Istaknuta stvar + linkovi ka platformama.</p>
+      <!-- MUSIC -->
+      <section id="music" class="section">
+        <div class="container">
+          <h2 class="section__title">Muzika</h2>
+          <p class="section__lead">Istaknuta stvar + linkovi ka platformama.</p>
 
-        <div class="grid">
-          <div class="card">
-            <h3 class="card__title">Featured track</h3>
-            <p class="card__text">Ubaci Spotify embed ili link ka pesmi/EP-ju.</p>
-            <div class="embed">
-              <!-- Zameni ovde Spotify iframe kad budeš imao link -->
-              <div class="embed__placeholder">Spotify embed (iframe) ide ovde</div>
+          <div class="grid">
+            <div class="card">
+              <h3 class="card__title">Featured track</h3>
+              <p class="card__text">Ubaci Spotify embed ili link ka pesmi/EP-ju.</p>
+              <div class="embed">
+                <!-- Zameni ovde Spotify iframe kad budeš imao link -->
+                <div class="embed__placeholder">Spotify embed (iframe) ide ovde</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 class="card__title">Linkovi</h3>
+              <ul class="list">
+                <li><a href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a></li>
+                <li><a href="https://music.apple.com/" target="_blank" rel="noopener">Apple Music</a></li>
+                <li><a href="https://bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a></li>
+              </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section id="video" class="section section--alt">
+        <div class="container">
+          <h2 class="section__title">Video</h2>
+          <p class="section__lead">Jedan spot ili live snimak (mobile-friendly).</p>
 
           <div class="card">
-            <h3 class="card__title">Linkovi</h3>
-            <ul class="list">
-              <li><a href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a></li>
-              <li><a href="https://music.apple.com/" target="_blank" rel="noopener">Apple Music</a></li>
-              <li><a href="https://bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section id="video" class="section section--alt">
-      <div class="container">
-        <h2 class="section__title">Video</h2>
-        <p class="section__lead">Jedan spot ili live snimak (mobile-friendly).</p>
-
-        <div class="card">
-          <h3 class="card__title">Featured video</h3>
-          <div class="ratio">
-            <!-- Zameni YT_VIDEO_ID -->
-            <iframe
-              src="https://www.youtube.com/embed/YT_VIDEO_ID"
-              title="Deca Loših Muzičara — video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <p class="card__text small">
-            Ako ne želiš embed, može samo dugme “Watch on YouTube”.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section section--alt">
-      <div class="container">
-        <h2 class="section__title">Kontakt</h2>
-        <p class="section__lead">Za booking, press i saradnje.</p>
-
-        <div class="grid">
-          <div class="card">
-            <h3 class="card__title">Booking</h3>
-            <p class="card__text">
-              Email: <a href="mailto:booking@decalosihmuzicara.com">booking@decalosihmuzicara.com</a><br/>
-              Instagram: <a href="https://instagram.com/" target="_blank" rel="noopener">@decalosihmuzicara</a>
+            <h3 class="card__title">Featured video</h3>
+            <div class="ratio">
+              <!-- Zameni YT_VIDEO_ID -->
+              <iframe
+                src="https://www.youtube.com/embed/YT_VIDEO_ID"
+                title="Deca Loših Muzičara — video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="card__text small">
+              Ako ne želiš embed, može samo dugme “Watch on YouTube”.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div class="card">
-            <h3 class="card__title">Press kit</h3>
-            <p class="card__text">Link ka press kitu (Google Drive / Dropbox) ili “uskoro”.</p>
-            <a class="btn btn--outline" href="#" aria-label="Press kit link">Open press kit</a>
+      <!-- CONTACT -->
+      <section id="contact" class="section section--alt">
+        <div class="container">
+          <h2 class="section__title">Kontakt</h2>
+          <p class="section__lead">Za booking, press i saradnje.</p>
+
+          <div class="grid">
+            <div class="card">
+              <h3 class="card__title">Booking</h3>
+              <p class="card__text">
+                Email: <a href="mailto:booking@decalosihmuzicara.com">booking@decalosihmuzicara.com</a><br/>
+                Instagram: <a href="https://instagram.com/" target="_blank" rel="noopener">@decalosihmuzicara</a>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3 class="card__title">Press kit</h3>
+              <p class="card__text">Link ka press kitu (Google Drive / Dropbox) ili “uskoro”.</p>
+              <a class="btn btn--outline" href="#" aria-label="Press kit link">Open press kit</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>© <span id="year"></span> Deca Loših Muzičara</p>
-      <div class="footer__links">
-        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> Deca Loših Muzičara</p>
+        <div class="footer__links">
+          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <script>
-  // Footer year
-  document.getElementById("year").textContent = new Date().getFullYear();
 
-  // ---- Gigs loader ----
-  const MONTHS = ["JAN","FEB","MAR","APR","MAJ","JUN","JUL","AVG","SEP","OKT","NOV","DEC"];
+    // ---- Gigs loader ----
+    const MONTHS = ["JAN","FEB","MAR","APR","MAJ","JUN","JUL","AVG","SEP","OKT","NOV","DEC"];
 
-  function parseLocalDate(dateStr) {
-    // "2026-02-15" -> Date at local midnight
-    const [y, m, d] = dateStr.split("-").map(Number);
-    return new Date(y, m - 1, d);
-  }
+    function parseLocalDate(dateStr) {
+      // "2026-02-15" -> Date at local midnight
+      const [y, m, d] = dateStr.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
 
-  function startOfToday() {
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  }
+    function startOfToday() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    }
 
-  function gigCard(g) {
-    const d = parseLocalDate(g.date);
-    const day = String(d.getDate()).padStart(2, "0");
-    const month = MONTHS[d.getMonth()];
-    const title = `${g.city} — ${g.venue}`;
-    const meta = [g.time, g.notes].filter(Boolean).join(" • ");
+    function gigCard(g) {
+      const d = parseLocalDate(g.date);
+      const day = String(d.getDate()).padStart(2, "0");
+      const month = MONTHS[d.getMonth()];
+      const title = `${g.city} — ${g.venue}`;
+      const meta = [g.time, g.notes].filter(Boolean).join(" • ");
 
-    const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted">—</span>`;
-    const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
+      const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted">—</span>`;
+      const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
 
+      return `
+        <div class="gig">
+          <div class="gig__date">
+            <span class="gig__day">${day}</span>
+            <span class="gig__month">${month}</span>
+          </div>
+          <div class="gig__info">
+            <div class="gig__title">${title}</div>
+            <div class="gig__meta">${meta || ""}</div>
+          </div>
+          <div class="gig__actions">
+            ${tickets}
+            ${link}
+          </div>
+        </div>
+      `;
+    }
+
+    function yearBlock(year, gigsHtml) {
     return `
-      <div class="gig">
-        <div class="gig__date">
-          <span class="gig__day">${day}</span>
-          <span class="gig__month">${month}</span>
+      <details class="year" data-year="${year}">
+        <summary class="year__summary">
+          <span class="year__label">${year}</span>
+          <span class="year__hint">expand</span>
+        </summary>
+        <div class="year__content">
+          <div class="gigs">${gigsHtml}</div>
         </div>
-        <div class="gig__info">
-          <div class="gig__title">${title}</div>
-          <div class="gig__meta">${meta || ""}</div>
-        </div>
-        <div class="gig__actions">
-          ${tickets}
-          ${link}
-        </div>
-      </div>
+      </details>
     `;
   }
 
-  function yearBlock(year, gigsHtml) {
-    return `
-      <div class="yearblock">
-        <div class="yearblock__title">${year}</div>
-        <div class="gigs">${gigsHtml}</div>
-      </div>
-    `;
-  }
+    async function loadGigs() {
+      const upcomingEl = document.getElementById("gigs-upcoming");
+      const pastEl = document.getElementById("gigs-past");
+      const emptyEl = document.getElementById("gigs-empty");
+      const archiveEl = document.getElementById("gigs-archive");
 
-  async function loadGigs() {
-    const upcomingEl = document.getElementById("gigs-upcoming");
-    const pastEl = document.getElementById("gigs-past");
-    const emptyEl = document.getElementById("gigs-empty");
-    const archiveEl = document.getElementById("gigs-archive");
+      try {
+        const res = await fetch("./gigs.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to load gigs.json");
+        const data = await res.json();
+        const gigs = Array.isArray(data.gigs) ? data.gigs : [];
 
-    try {
-      const res = await fetch("./gigs.json", { cache: "no-store" });
-      if (!res.ok) throw new Error("Failed to load gigs.json");
-      const data = await res.json();
-      const gigs = Array.isArray(data.gigs) ? data.gigs : [];
+        const today = startOfToday();
 
-      const today = startOfToday();
+        // Normalize + sort
+        const normalized = gigs
+          .filter(g => g && g.date)
+          .map(g => ({ ...g, _dateObj: parseLocalDate(g.date) }))
+          .sort((a, b) => a._dateObj - b._dateObj);
 
-      // Normalize + sort
-      const normalized = gigs
-        .filter(g => g && g.date)
-        .map(g => ({ ...g, _dateObj: parseLocalDate(g.date) }))
-        .sort((a, b) => a._dateObj - b._dateObj);
+        // Upcoming vs past (past = strictly before today)
+        const upcoming = normalized.filter(g => g._dateObj >= today);
+        const past = normalized.filter(g => g._dateObj < today).sort((a,b) => b._dateObj - a._dateObj);
 
-      // Upcoming vs past (past = strictly before today)
-      const upcoming = normalized.filter(g => g._dateObj >= today);
-      const past = normalized.filter(g => g._dateObj < today).sort((a,b) => b._dateObj - a._dateObj);
+        // Render upcoming
+        if (upcoming.length === 0) {
+          upcomingEl.innerHTML = "";
+          emptyEl.style.display = "block";
+        } else {
+          emptyEl.style.display = "none";
+          upcomingEl.innerHTML = upcoming.map(g => gigCard(g)).join("");
+          // highlight next
+          const firstGig = upcomingEl.querySelector(".gig");
+          if (firstGig) firstGig.classList.add("gig--next");
+        }
 
-      // Render upcoming
-      if (upcoming.length === 0) {
-        upcomingEl.innerHTML = "";
-        emptyEl.style.display = "block";
-      } else {
-        emptyEl.style.display = "none";
-        upcomingEl.innerHTML = upcoming.map(g => gigCard(g)).join("");
-        // highlight next
-        const firstGig = upcomingEl.querySelector(".gig");
-        if (firstGig) firstGig.classList.add("gig--next");
-      }
+        // Group past by year
+        const byYear = new Map();
+        for (const g of past) {
+          const y = g._dateObj.getFullYear();
+          if (!byYear.has(y)) byYear.set(y, []);
+          byYear.get(y).push(g);
+        }
 
-      // Group past by year
-      const byYear = new Map();
-      for (const g of past) {
-        const y = g._dateObj.getFullYear();
-        if (!byYear.has(y)) byYear.set(y, []);
-        byYear.get(y).push(g);
-      }
+        if (byYear.size === 0) {
+          archiveEl.style.display = "none";
+        } else {
+          const years = Array.from(byYear.keys()).sort((a, b) => b - a);
 
-      if (byYear.size === 0) {
-        archiveEl.style.display = "none";
-      } else {
-        archiveEl.style.display = "block";
-        const years = Array.from(byYear.keys()).sort((a,b) => b - a);
-        pastEl.innerHTML = years
+          pastEl.innerHTML = years
           .map(y => yearBlock(y, byYear.get(y).map(g => gigCard(g)).join("")))
           .join("");
-      }
-    } catch (e) {
-      // Fail gracefully
-      upcomingEl.innerHTML = "";
-      emptyEl.style.display = "block";
-      archiveEl.style.display = "none";
-      console.warn(e);
-    }
-  }
 
-  loadGigs();
-</script>
-</body>
-</html>
+          // open latest year by default
+          const firstYear = document.querySelector(".year");
+          if (firstYear) firstYear.setAttribute("open", true);
+
+          // collapse all
+          const collapseAllBtn = document.getElementById("archive-collapse-all");
+          if (collapseAllBtn) {
+            collapseAllBtn.style.display = "inline-flex";
+            collapseAllBtn.addEventListener("click", () => {
+            document.querySelectorAll(".year[open]").forEach(d => d.removeAttribute("open"));
+            });
+          }
+        }
+      } catch (e) {
+        // Fail gracefully
+        upcomingEl.innerHTML = "";
+        emptyEl.style.display = "block";
+        archiveEl.style.display = "none";
+        console.warn(e);
+      }
+    }
+
+    loadGigs();
+  </script>
+  </body>
+  </html>
