@@ -50,46 +50,25 @@
       </div>
     </section>
 
-        <!-- GIGS -->
-    <section id="gigs" class="section">
-      <div class="container">
-        <h2 class="section__title">Koncerti</h2>
-        <p class="section__lead">Kratka lista narednih datuma.</p>
+   <section id="gigs" class="section">
+  <div class="container">
+    <h2 class="section__title">Koncerti</h2>
+    <p class="section__lead">Predstojeće svirke + arhiva po godinama.</p>
 
-        <div class="card">
-          <div class="gigs">
-            <!-- Koncerti test -->
-            <div class="gig">
-              <div class="gig__date">
-                <span class="gig__day">15</span>
-                <span class="gig__month">FEB</span>
-              </div>
-              <div class="gig__info">
-                <div class="gig__title">Beograd — Klub XYZ</div>
-                <div class="gig__meta">21:00 • Ulaz: TBD</div>
-              </div>
-              <a class="gig__link" href="#" aria-label="Detalji događaja">Detalji</a>
-            </div>
+    <div class="card">
+      <h3 class="card__title">Predstojeće</h3>
+      <div id="gigs-upcoming" class="gigs"></div>
+      <p id="gigs-empty" class="card__text small" style="display:none;">
+        Trenutno nema najavljenih svirki. Pratite nas za novosti.
+      </p>
+    </div>
 
-            <div class="gig">
-              <div class="gig__date">
-                <span class="gig__day">02</span>
-                <span class="gig__month">MAR</span>
-              </div>
-              <div class="gig__info">
-                <div class="gig__title">Novi Sad — Klub ABC</div>
-                <div class="gig__meta">20:30 • Ulaz: TBD</div>
-              </div>
-              <a class="gig__link" href="#" aria-label="Detalji događaja">Detalji</a>
-            </div>
-          </div>
-
-          <p class="card__text small">
-            Nemate najavljene svirke? Ostavimo jednu rečenicu: “Pratite nas za novosti.”
-          </p>
-        </div>
-      </div>
-    </section>
+    <details class="archive" id="gigs-archive">
+      <summary class="archive__summary">Prikaži prošle koncerte</summary>
+      <div class="archive__content" id="gigs-past"></div>
+    </details>
+  </div>
+</section>
 
     <!-- MUSIC -->
     <section id="music" class="section">
@@ -182,5 +161,124 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---- Gigs loader ----
+  const MONTHS = ["JAN","FEB","MAR","APR","MAJ","JUN","JUL","AVG","SEP","OKT","NOV","DEC"];
+
+  function parseLocalDate(dateStr) {
+    // "2026-02-15" -> Date at local midnight
+    const [y, m, d] = dateStr.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function startOfToday() {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  }
+
+  function gigCard(g) {
+    const d = parseLocalDate(g.date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = MONTHS[d.getMonth()];
+    const title = `${g.city} — ${g.venue}`;
+    const meta = [g.time, g.notes].filter(Boolean).join(" • ");
+
+    const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted">—</span>`;
+    const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
+
+    return `
+      <div class="gig">
+        <div class="gig__date">
+          <span class="gig__day">${day}</span>
+          <span class="gig__month">${month}</span>
+        </div>
+        <div class="gig__info">
+          <div class="gig__title">${title}</div>
+          <div class="gig__meta">${meta || ""}</div>
+        </div>
+        <div class="gig__actions">
+          ${tickets}
+          ${link}
+        </div>
+      </div>
+    `;
+  }
+
+  function yearBlock(year, gigsHtml) {
+    return `
+      <div class="yearblock">
+        <div class="yearblock__title">${year}</div>
+        <div class="gigs">${gigsHtml}</div>
+      </div>
+    `;
+  }
+
+  async function loadGigs() {
+    const upcomingEl = document.getElementById("gigs-upcoming");
+    const pastEl = document.getElementById("gigs-past");
+    const emptyEl = document.getElementById("gigs-empty");
+    const archiveEl = document.getElementById("gigs-archive");
+
+    try {
+      const res = await fetch("./gigs.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Failed to load gigs.json");
+      const data = await res.json();
+      const gigs = Array.isArray(data.gigs) ? data.gigs : [];
+
+      const today = startOfToday();
+
+      // Normalize + sort
+      const normalized = gigs
+        .filter(g => g && g.date)
+        .map(g => ({ ...g, _dateObj: parseLocalDate(g.date) }))
+        .sort((a, b) => a._dateObj - b._dateObj);
+
+      // Upcoming vs past (past = strictly before today)
+      const upcoming = normalized.filter(g => g._dateObj >= today);
+      const past = normalized.filter(g => g._dateObj < today).sort((a,b) => b._dateObj - a._dateObj);
+
+      // Render upcoming
+      if (upcoming.length === 0) {
+        upcomingEl.innerHTML = "";
+        emptyEl.style.display = "block";
+      } else {
+        emptyEl.style.display = "none";
+        upcomingEl.innerHTML = upcoming.map(g => gigCard(g)).join("");
+        // highlight next
+        const firstGig = upcomingEl.querySelector(".gig");
+        if (firstGig) firstGig.classList.add("gig--next");
+      }
+
+      // Group past by year
+      const byYear = new Map();
+      for (const g of past) {
+        const y = g._dateObj.getFullYear();
+        if (!byYear.has(y)) byYear.set(y, []);
+        byYear.get(y).push(g);
+      }
+
+      if (byYear.size === 0) {
+        archiveEl.style.display = "none";
+      } else {
+        archiveEl.style.display = "block";
+        const years = Array.from(byYear.keys()).sort((a,b) => b - a);
+        pastEl.innerHTML = years
+          .map(y => yearBlock(y, byYear.get(y).map(g => gigCard(g)).join("")))
+          .join("");
+      }
+    } catch (e) {
+      // Fail gracefully
+      upcomingEl.innerHTML = "";
+      emptyEl.style.display = "block";
+      archiveEl.style.display = "none";
+      console.warn(e);
+    }
+  }
+
+  loadGigs();
+</script>
 </body>
 </html>
