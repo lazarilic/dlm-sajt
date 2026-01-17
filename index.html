@@ -63,15 +63,20 @@
         </p>
       </div>
 
-      <div class="archive" id="gigs-archive">
-      <div class="archive__head">
-      <h3 class="archive__title">Prošli koncerti</h3>
+      <details class="archive" id="gigs-archive">
+      <summary class="archive__summary">Prošli koncerti</summary>
+
+  <div class="archive__content">
+    <div class="archive__head">
+      <div class="archive__title">Po godinama</div>
       <button class="archive__toggle" type="button" id="archive-collapse-all" style="display:none;">
-        Collapse all
+        Zatvori sve
       </button>
-      </div>
-      <div class="archive__content" id="gigs-past"></div>
-      </div>
+    </div>
+
+    <div id="gigs-past"></div>
+  </div>
+</details>
     </div>
   </section>
 
@@ -279,17 +284,14 @@
           .map(y => yearBlock(y, byYear.get(y).map(g => gigCard(g)).join("")))
           .join("");
 
-          // open latest year by default
-          const firstYear = document.querySelector(".year");
-          if (firstYear) firstYear.setAttribute("open", true);
-
           // collapse all
           const collapseAllBtn = document.getElementById("archive-collapse-all");
           if (collapseAllBtn) {
-            collapseAllBtn.style.display = "inline-flex";
-            collapseAllBtn.addEventListener("click", () => {
-            document.querySelectorAll(".year[open]").forEach(d => d.removeAttribute("open"));
-            });
+          collapseAllBtn.style.display = "inline-flex";
+
+          collapseAllBtn.onclick = () => {
+          document.querySelectorAll(".year[open]").forEach(d => d.removeAttribute("open"));
+            };
           }
         }
       } catch (e) {
