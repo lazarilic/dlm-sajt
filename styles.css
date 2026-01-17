@@ -46,28 +46,30 @@ a:hover{ color: var(--dlm-blue); }
   padding: 12px 0;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none; /* skida underline sa linka */
 }
 
-.brand_logo {
-  display: flex;
-  align-items: center;
+.brand__logo{
+  height: 42px;
+  width: auto;
+  display:block;
+  flex: 0 0 auto;
 }
 
-.brand_name {
+.brand__name{
   font-size: 20px;
   font-weight: 900;
   letter-spacing: -0.01em;
-  color: #2d2a6e;
+  color: var(--dlm-blue);
+  text-decoration:none;
 }
 
-@media (max-width: 480px) {
-  .brand_name {
-    font-size: 16px;
-  }
+@media (max-width: 480px){
+  .brand__name{ font-size: 18px; }
 }
 
 .nav{
@@ -445,15 +447,17 @@ a:hover{ color: var(--dlm-blue); }
   content: "collapse";
 }
 
+.archive:not([open]) .archive__content{ display:none; }
+
 .archive__content{
   padding: 12px 14px 14px;
   border-top: var(--border);
 }
 
-.brand__logo{
-  height: 42px;
-  width: auto !important;
-  max-width: none !important;
-  display: block;
-  flex: 0 0 auto;
+.year__hint::before{
+  content:"otvori";
+}
+
+.year[open] .year__hint::before{
+  content:"zatvori";
 }

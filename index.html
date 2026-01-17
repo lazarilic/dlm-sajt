@@ -168,9 +168,6 @@
     </footer>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-    <script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -193,7 +190,7 @@
       const day = String(d.getDate()).padStart(2, "0");
       const month = MONTHS[d.getMonth()];
       const title = `${g.city} — ${g.venue}`;
-      const meta = [g.time, g.notes].filter(Boolean).join(" • ");
+      const meta = [g.notes].filter(Boolean).join(" • ");
 
       const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted">—</span>`;
       const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
@@ -221,7 +218,7 @@
       <details class="year" data-year="${year}">
         <summary class="year__summary">
           <span class="year__label">${year}</span>
-          <span class="year__hint">expand</span>
+          <span class="year__hint"></span>
         </summary>
         <div class="year__content">
           <div class="gigs">${gigsHtml}</div>
