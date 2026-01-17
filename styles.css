@@ -457,14 +457,14 @@ a:hover{ color: var(--dlm-blue); }
 .archive__summary::-webkit-details-marker{ display:none; }
 
 .archive__summary::after{
-  content: "prikaži";
+  content: "+";
   font-size: 12px;
   color: var(--dlm-gray);
   font-weight: 800;
 }
 
 .archive[open] .archive__summary::after{
-  content: "zatvori";
+  content: "-";
 }
 
 .archive:not([open]) .archive__content{ display:none; }
@@ -475,9 +475,9 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .year__hint::before{
-  content:"prikaži";
+  content:"+";
 }
 
 .year[open] .year__hint::before{
-  content:"zatvori";
+  content:"-";
 }
