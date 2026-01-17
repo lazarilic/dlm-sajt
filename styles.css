@@ -366,6 +366,26 @@ a:hover{ color: var(--dlm-blue); }
   border-top: var(--border);
 }
 
+.archive__head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.archive__toggle{
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--dlm-gray);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.archive__toggle:hover{
+  color: var(--dlm-blue);
+  text-decoration: underline;
+}
+
 .yearblock{ margin-top: 12px; }
 .yearblock__title{
   font-weight: 900;
@@ -437,7 +457,7 @@ a:hover{ color: var(--dlm-blue); }
 .archive__summary::-webkit-details-marker{ display:none; }
 
 .archive__summary::after{
-  content: "expand";
+  content: "otvori";
   font-size: 12px;
   color: var(--dlm-gray);
   font-weight: 800;
