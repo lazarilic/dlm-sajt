@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="header site-header">
       <div class="container header__inner">
         <a class="brand" href="#top" aria-label="Početna">
           <img class="brand__logo" src="assets/logo.png" alt="DLM logo" />
@@ -26,6 +26,27 @@
     </header>
 
     <main id="top">
+      <!-- HERO -->
+      <section class="hero" aria-label="Hero">
+        <div class="hero__bg" role="presentation"></div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <div class="hero__brand">
+              <img class="hero__logo" src="assets/logo.png" alt="Deca Loših Muzičara" />
+              <h1 class="hero__title">Deca Loših Muzičara</h1>
+            </div>
+            <p class="hero__subtitle">Funk/rock bend — live energija i sirovi groove.</p>
+
+            <div class="cta">
+              <a class="btn btn--primary" href="#music">Poslušaj</a>
+              <a class="btn btn--outline" href="#gigs">Koncerti</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="gigs" class="section">
         <div class="container">
           <div class="card">
@@ -53,29 +74,6 @@
               <div id="gigs-past"></div>
             </div>
           </details>
-        </div>
-      </section>
-
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container hero__inner">
-          <p class="badge">FUNK • ROCK</p>
-          <p class="hero__subtitle">
-          „Uvek isti rat - Uvek drugi mir“
-          </p>
-
-          <div class="cta">
-            <a class="btn btn--primary" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-            <a class="btn btn--outline" href="#music">▶ Muzika</a>
-          </div>
-
-          <div class="quicklinks">
-            <a class="quicklinks__item" href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
-            <span class="dot">•</span>
-            <a class="quicklinks__item" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-            <span class="dot">•</span>
-            <a class="quicklinks__item" href="mailto:info@liniacontra.rs">info@liniacontra.rs</a>
-          </div>
         </div>
       </section>
 
@@ -303,6 +301,16 @@
     }
 
     loadGigs();
+
+    // Sticky header only after hero
+    const header = document.querySelector(".site-header");
+    const hero = document.querySelector(".hero");
+    if (header && hero && "IntersectionObserver" in window) {
+      const obs = new IntersectionObserver(([entry]) => {
+        header.classList.toggle("is-sticky", !entry.isIntersecting);
+      }, { threshold: 0 });
+      obs.observe(hero);
+    }
   </script>
   </body>
   </html>
