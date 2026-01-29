@@ -30,11 +30,11 @@
       <section class="hero" aria-label="Hero">
         <div class="hero__bg" role="presentation"></div>
         <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__sentinel" aria-hidden="true"></div>
 
         <div class="container hero__inner">
           <div class="hero__content">
             <div class="hero__brand">
-              <img class="hero__logo" src="assets/logo.png" alt="Deca Loših Muzičara" />
               <h1 class="hero__title">Deca Loših Muzičara</h1>
             </div>
             <p class="hero__subtitle">Funk/rock bend — live energija i sirovi groove.</p>
@@ -304,12 +304,12 @@
 
     // Sticky header only after hero
     const header = document.querySelector(".site-header");
-    const hero = document.querySelector(".hero");
-    if (header && hero && "IntersectionObserver" in window) {
+    const sentinel = document.querySelector(".hero__sentinel");
+    if (header && sentinel && "IntersectionObserver" in window) {
       const obs = new IntersectionObserver(([entry]) => {
         header.classList.toggle("is-sticky", !entry.isIntersecting);
-      }, { threshold: 0 });
-      obs.observe(hero);
+      }, { threshold: 0, rootMargin: "-60px 0px 0px 0px" });
+      obs.observe(sentinel);
     }
   </script>
   </body>

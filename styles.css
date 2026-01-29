@@ -30,16 +30,21 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .header{
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
-  background: rgba(255,255,255,.85);
-  backdrop-filter: blur(8px);
-  border-bottom: var(--border);
+  background: transparent;
+  border-bottom: none;
 }
 .site-header.is-sticky{
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: rgba(17,17,17,.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
 }
 
 .header__inner{
@@ -47,7 +52,8 @@ a:hover{ color: var(--dlm-blue); }
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  padding: 12px 0;
+  min-height: 56px;
+  padding: 0;
 }
 
 .brand{
@@ -58,22 +64,23 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .brand__logo{
-  height: 42px;
+  height: 28px;
   width: auto;
   display:block;
   flex: 0 0 auto;
 }
 
 .brand__name{
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  color: var(--dlm-blue);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  opacity: .85;
   text-decoration:none;
 }
 
 @media (max-width: 480px){
-  .brand__name{ font-size: 18px; }
+  .brand__name{ font-size: 14px; }
 }
 
 .nav{
@@ -83,16 +90,16 @@ a:hover{ color: var(--dlm-blue); }
 .nav__link{
   text-decoration:none;
   font-size: 14px;
-  color: var(--dlm-gray);
+  color: rgba(255,255,255,.85);
 }
-.nav__link:hover{ color: var(--dlm-blue); }
+.nav__link:hover{ color: #fff; }
 
 .hero{
   position: relative;
-  min-height: calc(100vh - 66px);
+  min-height: 100vh;
   display:flex;
   align-items:center;
-  padding: 36px 0;
+  padding: 96px 0 36px;
   color: #fff;
   overflow: hidden;
 }
@@ -107,6 +114,14 @@ a:hover{ color: var(--dlm-blue); }
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,.65);
+  z-index: 1;
+}
+.hero__sentinel{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
   z-index: 1;
 }
 .hero__inner{
@@ -134,9 +149,11 @@ a:hover{ color: var(--dlm-blue); }
 }
 .hero__title{
   margin: 0;
-  font-size: 34px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  text-transform: uppercase;
   color: #fff;
 }
 .hero__subtitle{
@@ -150,7 +167,7 @@ a:hover{ color: var(--dlm-blue); }
   display:flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 6px;
+  margin-top: 24px;
 }
 
 .btn{
