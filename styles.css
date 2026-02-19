@@ -228,6 +228,33 @@ a:hover{ color: var(--dlm-blue); }
   border-bottom: none;
   padding: 48px 0;
 }
+.section--dark .card{
+  background: var(--dlm-dark-2);
+  border-color: rgba(255,255,255,.1);
+  box-shadow: none;
+}
+.section--dark .card__title{
+  color: #fff;
+}
+.section--dark .card__text{
+  color: rgba(255,255,255,.55);
+}
+.section--dark .card__text a{
+  color: rgba(255,255,255,.8);
+  border-bottom: 1px solid rgba(255,255,255,.2);
+}
+.section--dark .card__text a:hover{
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,.5);
+}
+.section--dark .btn--outline{
+  border-color: rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+}
+.section--dark .btn--outline:hover{
+  border-color: rgba(255,255,255,.6);
+  color: #fff;
+}
 .section--dark .section__title{
   color: #fff;
   text-transform: uppercase;
@@ -288,6 +315,20 @@ a:hover{ color: var(--dlm-blue); }
   border-radius: 14px;
   overflow: hidden;
   background: rgba(17,17,17,.02);
+}
+.embed--spotify{
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  overflow: hidden;
+  font-size: 0; /* removes inline whitespace gap below iframe */
+}
+.embed--spotify iframe{
+  display: block;
+  border-radius: 12px;
+}
+.music-cta{
+  padding: 14px 0 2px;
 }
 .embed__placeholder{
   padding: 18px;
@@ -452,13 +493,14 @@ a:hover{ color: var(--dlm-blue); }
 
 .footer{
   padding: 18px 0;
-  border-top: var(--border);
+  background: var(--dlm-dark);
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 .footer__inner{
   display:flex;
   flex-direction:column;
   gap: 10px;
-  color: var(--dlm-gray);
+  color: rgba(255,255,255,.3);
   font-size: 13px;
 }
 .footer__links{
@@ -468,8 +510,12 @@ a:hover{ color: var(--dlm-blue); }
 }
 .footer__links a{
   text-decoration:none;
-  color: var(--dlm-blue);
-  border-bottom: 1px solid rgba(43,42,110,.25);
+  color: rgba(255,255,255,.45);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.footer__links a:hover{
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,.4);
 }
 
 /* Desktop enhancements */
