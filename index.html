@@ -47,14 +47,14 @@
         </div>
       </section>
 
-      <section id="gigs" class="section">
+      <section id="gigs" class="section section--dark">
         <div class="container">
-          <div class="card">
-            <div id="gigs-upcoming" class="gigs"></div>
-            <p id="gigs-empty" class="card__text small" style="display:none;">
-              Trenutno nema najavljenih svirki. Pratite nas za novosti.
-            </p>
-          </div>
+          <h2 class="section__title">Koncerti</h2>
+
+          <div id="gigs-upcoming" class="gigs"></div>
+          <p id="gigs-empty" class="card__text small" style="display:none;color:rgba(255,255,255,.4);">
+            Trenutno nema najavljenih svirki. Pratite nas za novosti.
+          </p>
 
           <details class="archive" id="gigs-archive">
             <summary class="archive__summary">Arhiva koncerata</summary>
@@ -183,30 +183,42 @@
       return new Date(now.getFullYear(), now.getMonth(), now.getDate());
     }
 
-    function gigCard(g) {
+    function gigCard(g, index) {
       const d = parseLocalDate(g.date);
       const day = String(d.getDate()).padStart(2, "0");
       const month = MONTHS[d.getMonth()];
       const title = `${g.city} — ${g.venue}`;
       const meta = [g.notes].filter(Boolean).join(" • ");
+      const serial = typeof index === "number" ? `#${String(index + 1).padStart(3, "0")}` : "";
 
-      const link = g.url ? `<a class="gig__link" href="${g.url}" target="_blank" rel="noopener">Detalji</a>` : `<span class="gig__link gig__link--muted"></span>`;
-      const tickets = g.ticketsUrl ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>` : "";
+      const link = g.url
+        ? `<a class="gig__link gig__link--outline" href="${g.url}" target="_blank" rel="noopener">Detalji →</a>`
+        : "";
+      const tickets = g.ticketsUrl
+        ? `<a class="gig__link" href="${g.ticketsUrl}" target="_blank" rel="noopener">Karte</a>`
+        : "";
 
       return `
         <div class="gig">
-          <div class="gig__date">
-            <span class="gig__day">${day}</span>
-            <span class="gig__month">${month}</span>
+          <div class="gig__top">
+            <div class="gig__date">
+              <span class="gig__day">${day}</span>
+              <span class="gig__month">${month}</span>
+            </div>
+            <div class="gig__info">
+              <span class="gig__next-badge">Next show</span>
+              <div class="gig__title">${title}</div>
+              <div class="gig__meta">${meta || ""}</div>
+            </div>
           </div>
-          <div class="gig__info">
-            <div class="gig__title">${title}</div>
-            <div class="gig__meta">${meta || ""}</div>
-          </div>
-          <div class="gig__actions">
-            ${tickets}
-            ${link}
-          </div>
+          ${(tickets || link) ? `
+          <hr class="gig__separator" />
+          <div class="gig__bottom">
+            <div class="gig__actions">
+              ${tickets}
+              ${link}
+            </div>
+          </div>` : ""}
         </div>
       `;
     }
@@ -255,7 +267,7 @@
           emptyEl.style.display = "block";
         } else {
           emptyEl.style.display = "none";
-          upcomingEl.innerHTML = upcoming.map(g => gigCard(g)).join("");
+          upcomingEl.innerHTML = upcoming.map((g, i) => gigCard(g, i)).join("");
           // highlight next
           const firstGig = upcomingEl.querySelector(".gig");
           if (firstGig) firstGig.classList.add("gig--next");
@@ -274,8 +286,9 @@
         } else {
           const years = Array.from(byYear.keys()).sort((a, b) => b - a);
 
+          let pastIndex = 0;
           pastEl.innerHTML = years
-          .map(y => yearBlock(y, byYear.get(y).map(g => gigCard(g)).join("")))
+          .map(y => yearBlock(y, byYear.get(y).map(g => gigCard(g, pastIndex++)).join("")))
           .join("");
 
           // collapse all

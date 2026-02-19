@@ -5,6 +5,10 @@
   --dlm-gray: #666666;
   --dlm-bg:   #ffffff;
 
+  --dlm-dark:   #0e0e0e;
+  --dlm-dark-2: #1a1a1a;
+  --dlm-dark-3: #222222;
+
   --radius: 18px;
   --shadow: 0 10px 30px rgba(17,17,17,.08);
   --border: 1px solid rgba(17,17,17,.10);
@@ -218,6 +222,24 @@ a:hover{ color: var(--dlm-blue); }
   border-top: var(--border);
   border-bottom: var(--border);
 }
+.section--dark{
+  background: var(--dlm-dark);
+  border-top: none;
+  border-bottom: none;
+  padding: 48px 0;
+}
+.section--dark .section__title{
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  font-weight: 900;
+  margin: 0 0 20px;
+  opacity: .45;
+}
+.section--dark .section__lead{
+  color: rgba(255,255,255,.35);
+}
 
 .section__lead{
   margin: 0 0 14px;
@@ -295,53 +317,138 @@ a:hover{ color: var(--dlm-blue); }
   flex-direction:column;
   gap: 10px;
 }
+
+/* ── Ticket stub card ─────────────────────────────── */
 .gig{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 8px;
+  border: 1px dashed rgba(255,255,255,.25);
+  background: var(--dlm-dark-2);
+  overflow: hidden;
+}
+
+.gig__top{
+  display:flex;
+  align-items:flex-start;
+  gap: 14px;
+  padding: 14px 16px 12px;
+}
+
+.gig__separator{
+  border: none;
+  border-top: 1px dashed rgba(255,255,255,.15);
+  margin: 0 16px;
+}
+
+.gig__bottom{
   display:flex;
   align-items:center;
-  gap: 12px;
-  padding: 10px;
-  border-radius: 14px;
-  border: var(--border);
-  background: rgba(17,17,17,.02);
+  justify-content: space-between;
+  padding: 10px 16px 12px;
+  gap: 8px;
 }
+
+.gig__serial{
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(255,255,255,.25);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
 .gig__date{
-  width: 58px;
-  min-width: 58px;
-  border-radius: 14px;
-  padding: 8px 0;
+  width: 64px;
+  min-width: 64px;
   text-align:center;
-  background: rgba(224,32,32,.08);
-  border: 1px solid rgba(224,32,32,.18);
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  padding-top: 2px;
 }
 .gig__day{
   display:block;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 900;
-  color: var(--dlm-red);
+  color: #fff;
   line-height: 1;
 }
 .gig__month{
   display:block;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--dlm-blue);
-  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--dlm-red);
+  margin-top: 3px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .gig__info{ flex: 1; min-width: 0; }
 .gig__title{
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .gig__meta{
-  font-size: 13px;
-  color: var(--dlm-gray);
+  font-size: 12px;
+  color: rgba(255,255,255,.4);
+  margin-top: 2px;
 }
 .gig__link{
+  display: inline-block;
   text-decoration:none;
-  font-weight: 800;
-  color: var(--dlm-blue);
-  border-bottom: 1px solid rgba(43,42,110,.25);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 5px 10px;
+  line-height: 1;
+  color: #fff;
+  background: var(--dlm-red);
+  border: none;
 }
+.gig__link:hover{
+  filter: brightness(1.1);
+  color: #fff;
+}
+.gig__link--outline{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+}
+.gig__link--outline:hover{
+  border-color: rgba(255,255,255,.6);
+  color: #fff;
+  filter: none;
+}
+
+/* ── Next show highlight ──────────────────────────── */
+.gig--next{
+  border-color: var(--dlm-red);
+  background: rgba(224,32,32,.07);
+}
+.gig--next .gig__next-badge{
+  display: inline-flex;
+  align-items: center;
+  background: var(--dlm-red);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.gig__next-badge{ display: none; }
 
 .footer{
   padding: 18px 0;
@@ -380,35 +487,56 @@ a:hover{ color: var(--dlm-blue); }
 
 .gig__actions{
   display:flex;
-  gap: 10px;
+  gap: 8px;
   align-items:center;
   justify-content:flex-end;
 }
 .gig__link--muted{
-  color: var(--dlm-gray);
-  border-bottom: none;
-  font-weight: 700;
+  display: none;
 }
 
+/* ── Archive (dark) ───────────────────────────────── */
 .archive{
   margin-top: 14px;
-  border: var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
+  border: 1px dashed rgba(255,255,255,.15);
+  border-radius: 8px;
+  background: var(--dlm-dark-2);
+  box-shadow: none;
   overflow: hidden;
 }
+
 .archive__summary{
   list-style: none;
   cursor: pointer;
-  padding: 14px;
-  font-weight: 800;
-  color: var(--dlm-blue);
+  padding: 14px 16px;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
 }
+
 .archive__summary::-webkit-details-marker{ display:none; }
+
+.archive__summary::after{
+  content: "+";
+  font-size: 14px;
+  color: var(--dlm-red);
+  font-weight: 900;
+}
+
+.archive[open] .archive__summary::after{
+  content: "−";
+}
+
+.archive:not([open]) .archive__content{ display:none; }
+
 .archive__content{
-  padding: 0 14px 14px;
-  border-top: var(--border);
+  padding: 12px 14px 14px;
+  border-top: 1px dashed rgba(255,255,255,.1);
 }
 
 .archive__head{
@@ -419,104 +547,62 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .archive__toggle{
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--dlm-gray);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
   text-decoration: none;
   cursor: pointer;
 }
 
 .archive__toggle:hover{
-  color: var(--dlm-blue);
-  text-decoration: underline;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
 }
 
+/* ── Year blocks (dark) ───────────────────────────── */
 .yearblock{ margin-top: 12px; }
 .yearblock__title{
   font-weight: 900;
-  color: var(--dlm-black);
+  color: #fff;
   margin: 10px 0;
 }
 
 .year{
-  margin-top: 10px;
-  border: var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
+  margin-top: 8px;
+  border: 1px dashed rgba(255,255,255,.12);
+  border-radius: 8px;
+  background: var(--dlm-dark-3);
+  box-shadow: none;
   overflow: hidden;
 }
 
 .year__summary{
   list-style: none;
   cursor: pointer;
-  padding: 12px 14px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   font-weight: 900;
-  color: var(--dlm-black);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
 }
 
 .year__summary::-webkit-details-marker{ display:none; }
 
 .year__label{
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .year__hint{
   font-size: 12px;
-  color: var(--dlm-gray);
-  font-weight: 800;
-}
-
-.year[open] .year__hint{
-  content: "";
-}
-
-.year__content{
-  border-top: var(--border);
-  padding: 10px 14px 14px;
-}
-.archive{
-  margin-top: 14px;
-  border: var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.archive__summary{
-  list-style: none;
-  cursor: pointer;
-  padding: 14px;
+  color: var(--dlm-red);
   font-weight: 900;
-  color: var(--dlm-blue);
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-}
-
-.archive__summary::-webkit-details-marker{ display:none; }
-
-.archive__summary::after{
-  content: "+";
-  font-size: 12px;
-  color: var(--dlm-gray);
-  font-weight: 800;
-}
-
-.archive[open] .archive__summary::after{
-  content: "-";
-}
-
-.archive:not([open]) .archive__content{ display:none; }
-
-.archive__content{
-  padding: 12px 14px 14px;
-  border-top: var(--border);
 }
 
 .year__hint::before{
@@ -524,5 +610,14 @@ a:hover{ color: var(--dlm-blue); }
 }
 
 .year[open] .year__hint::before{
-  content:"-";
+  content:"−";
+}
+
+.year[open] .year__summary{
+  color: rgba(255,255,255,.75);
+}
+
+.year__content{
+  border-top: 1px dashed rgba(255,255,255,.1);
+  padding: 10px 14px 14px;
 }
