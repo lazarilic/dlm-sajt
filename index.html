@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Deca Loših Muzičara</title>
     <meta name="description" content="Deca Loših Muzičara — funk/rock bend. Muzika, koncerti, video i kontakt." />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/logo.png" />
+  <link rel="preload" as="image" href="assets/hero-image.jpg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Deca Losih Muzicara" />
+  <meta property="og:description" content="Funk/Rock bend iz Beograda. Muzika, koncerti i video." />
+  <meta property="og:image" content="https://www.decalosihmuzicara.com/assets/hero-image.jpg" />
+  <meta property="og:url" content="https://www.decalosihmuzicara.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Deca Losih Muzicara" />
+  <meta name="twitter:description" content="Funk/Rock bend iz Beograda. Muzika, koncerti i video." />
+  <meta name="twitter:image" content="https://www.decalosihmuzicara.com/assets/hero-image.jpg" />
+  <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -16,13 +28,17 @@
           <span class="brand__name">Deca Loših Muzičara</span>
         </a>
 
-        <nav class="nav" aria-label="Glavna navigacija">
+                <nav class="nav" id="main-nav" aria-label="Glavna navigacija">
           <a class="nav__link" href="#gigs">Koncerti</a>
           <a class="nav__link" href="#music">Muzika</a>
           <a class="nav__link" href="#video">Video</a>
           <a class="nav__link" href="#contact">Kontakt</a>
         </nav>
-      </div>
+        <button class="nav__toggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="main-nav">
+                    <span></span><span></span><span></span>
+                            </button>
+
+                          </div>
     </header>
 
     <main id="top">
@@ -301,7 +317,18 @@
     }
 
     loadGigs();
+  // Hamburger menu
+    const navToggle = document.querySelector('.nav__toggle');
+      const mainNav = document.querySelector('#main-nav');
+        if (navToggle && mainNav) {
+            navToggle.addEventListener('click', () => {
+                  const isOpen = mainNav.classList.toggle('nav--open');
+                        navToggle.classList.toggle('nav__toggle--open', isOpen);
+                              navToggle.setAttribute('aria-expanded', isOpen);
+                                  });
+                                    }
 
+                                    
     // Sticky header only after hero
     const header = document.querySelector(".site-header");
     const sentinel = document.querySelector(".hero__sentinel");
