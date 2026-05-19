@@ -3,10 +3,10 @@
 
     { "date": "2026-02-14", "city": "Pančevo", "venue": "Bajka013", "notes": "" },
     { "date": "2026-02-20", "city": "Požarevac", "venue": "klub KB", "notes": "", "ticketsUrl": "https://tickets.rs/search?filter=Text:alter%20rock%20ego;DateFrom:;DateTo:&fbclid=IwY2xjawQEQmdleHRuA2FlbQIxMABzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEepBDBMXN6CBm-OxbsKH6-wty4ujvotGvb_btyF4Z0t2qjcFHoz9nvHYesXiU_aem__VS9nNTc7iCyP1wdUSjzhg" },
-    { "date": "2026-03-20", "city": "Niš", "venue": "Livnica", "notes": "", "ticketsUrl": "https://bilet.rs/events/228/deca-losih-muzicara-20-mart" },
-    { "date": "2026-03-21", "city": "Niš", "venue": "Livnica", "notes": "", "ticketsUrl": "https://bilet.rs/events/229/deca-losih-muzicara-21-mart" },
-    { "date": "2026-03-27", "city": "Novi Sad", "venue": "SKC Fabrika", "notes": "" },
-    { "date": "2026-04-03", "city": "Beograd", "venue": "Zappa baza", "notes": "" },
+    { "date": "2026-05-01", "city": "Požarevac", "venue": "Gitarijada", "notes": "" },
+    { "date": "2026-05-30", "city": "Podgorica", "venue": "Garden Festival", "notes": "" },
+    { "date": "2026-06-04", "city": "Beograd", "venue": "Zappa barka", "notes": "", "ticketsUrl": "https://tickets.rs/event/deca_losih_muzicara_25415" },
+    { "date": "2026-06-05", "city": "Novi Sad", "venue": "SKC Fabrika", "notes": "", "ticketsUrl": "https://new.gigstix.com/event/deca-losih-muzicara-novi-sad-05-jun-2026/?fbclid=IwY2xjawR4CrNleHRuA2FlbQIxMABzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe5__dt3oxkILwR8Fl18_3lmGbbeGxShnDsWQkL8SOLx4-erG0jRRrFb6mBxw_aem_ZMlhV6FVENHT4lrjIylMJw" },
 
     { "date": "2025-06-07", "city": "Požarevac", "venue": "klub KB", "notes": "" },
     { "date": "2025-06-13", "city": "Beograd", "venue": "Bitef Art", "notes": "" },
