@@ -791,7 +791,7 @@
       <span class="accent">Muzičara</span>
     </h1>
     <p class="hero-sub">
-      Kultni funk rock bend iz Beograda. Brz i besan, ali melodičan zvuk — duvačka sekcija, trube i saksofoni od kraja osamdesetih do danas. <em style="color: var(--fg); font-style: normal;">"Dobardan!"</em> — 8. najbolji srpski album posle raspada SFRJ.
+      Hajde mala, nismo deca.
     </p>
     <div class="hero-ctas">
       <a class="btn" href="#muzika">
@@ -905,6 +905,8 @@
         Diskografija od 1988 do danas. <em style="color: var(--fg); font-style: normal;">Dobardan!</em> — 8. na listi najboljih srpskih albuma posle raspada SFRJ.
       </p>
     </div>
+
+    <p class="section__lead"><em>Ovaj zvuk nije bugi vugi.</em></p>
 
     <div class="discog">
       <article class="album">
@@ -1081,7 +1083,7 @@
         <h2 class="s-title">Bukiraj <span class="accent">bend.</span></h2>
       </div>
       <p class="s-aside">
-        Sviramo klubove, festivale, privatke. Tehnički rajder i stage plan — na upit.
+        <em>Poneće, draga, novčanik pun.</em>
       </p>
     </div>
 
@@ -1162,7 +1164,7 @@ function loadGigs() {
 
   const showsList = document.getElementById('shows-list');
   if (upcoming.length === 0) {
-    showsList.innerHTML = '<p style="color:var(--fg-mute);font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;padding:32px 0;">Trenutno nema najavljenih koncerata. Pratite nas na društvenim mrežama.</p>';
+    showsList.innerHTML = '<p style="color:var(--fg-mute);font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;padding:32px 0;">Najlepši je onaj dan kad se budim nasmejan — pratite nas za sledeći termin.</p>';
   } else {
     showsList.innerHTML = upcoming.map((g, i) => {
       const d = new Date(g.date + 'T00:00:00');
