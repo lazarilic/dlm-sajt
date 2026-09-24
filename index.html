@@ -4,9 +4,20 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DLM — Deca Loših Muzičara</title>
+<meta name="description" content="Deca Loših Muzičara, funk rock bend iz Beograda od 1988. Koncerti, diskografija, video i booking." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.decalosihmuzicara.com/" />
+<meta property="og:title" content="Deca Loših Muzičara" />
+<meta property="og:description" content="Deca Loših Muzičara, funk rock bend iz Beograda od 1988. Koncerti, diskografija, video i booking." />
+<meta property="og:image" content="https://www.decalosihmuzicara.com/assets/hero-image.jpg" />
+<meta property="og:locale" content="sr_RS" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="canonical" href="https://www.decalosihmuzicara.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #0a0908;
@@ -21,7 +32,7 @@
     --accent-deep: #9c1a13;
     --accent-soft: rgba(230, 48, 39, 0.14);
 
-    --font-display: "Anton", "Archivo Black", Impact, sans-serif;
+    --font-display: "Anton", Impact, sans-serif;
     --font-body: "Space Grotesk", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
@@ -122,13 +133,6 @@
     padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 6vw, 80px);
     position: relative;
     z-index: 2;
-  }
-  .hero-crest {
-    display: block;
-    width: clamp(160px, 18vw, 280px);
-    height: auto;
-    margin-bottom: 32px;
-    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));
   }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
@@ -237,6 +241,10 @@
   @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track, .nav .live-dot::before { animation: none; }
   }
 
   /* ---------- SECTION ---------- */
@@ -445,12 +453,15 @@
   /* ---------- MUZIKA ---------- */
   .discog {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(20px, 2.5vw, 32px);
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(16px, 2vw, 28px);
     margin-bottom: clamp(60px, 7vw, 100px);
   }
-  @media (max-width: 900px) { .discog { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .discog { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .discog { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) {
+    .discog { grid-template-columns: repeat(2, 1fr); }
+    .album-meta { flex-direction: column; gap: 4px; }
+  }
   .album { display: flex; flex-direction: column; gap: 14px; }
   .album-cover {
     aspect-ratio: 1 / 1;
@@ -511,13 +522,11 @@
   .tracklist { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
   .track {
     display: grid;
-    grid-template-columns: 32px 1fr auto auto;
+    grid-template-columns: 32px 1fr auto;
     gap: 18px;
     align-items: center;
     padding: 16px 0;
     border-top: 1px solid var(--line);
-    cursor: pointer;
-    transition: color .15s;
     position: relative;
   }
   .tracklist .track:last-child { border-bottom: 1px solid var(--line); }
@@ -548,17 +557,6 @@
     color: var(--fg-mute);
     letter-spacing: 0.06em;
   }
-  .track-play {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    border: 1px solid var(--line-2);
-    display: grid; place-items: center;
-    color: var(--fg-dim);
-    transition: all .15s;
-    flex-shrink: 0;
-  }
-  .track:hover .track-play { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .track:hover .track-name { color: var(--accent); }
   .streams {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -765,7 +763,7 @@
 <!-- ============ HEADER ============ -->
 <header class="topbar">
   <a class="brand" href="#top">
-    <img class="brand-mark" src="assets/logo.png" alt="DLM" width="56" height="32" />
+    <img class="brand-mark" src="assets/logo.webp" alt="DLM" width="56" height="32" />
     <span class="brand-name">Deca Loših Muzičara</span>
   </a>
   <nav class="nav">
@@ -903,10 +901,10 @@
     <div class="s-head">
       <div>
         <div class="s-num">03 / Muzika</div>
-        <h2 class="s-title">Pet albuma.<br /><span class="accent">Trideset i šest godina.</span></h2>
+        <h2 class="s-title">Pet albuma.<br /><span class="accent">Od 1988.</span></h2>
       </div>
       <p class="s-aside">
-        Diskografija od 1988 do danas. <em style="color: var(--fg); font-style: normal;">Dobardan!</em> — 8. na listi najboljih srpskih albuma posle raspada SFRJ.
+        Diskografija od 1992. do danas. <em style="color: var(--fg); font-style: normal;">Dobardan!</em> — 8. na listi najboljih srpskih albuma posle raspada SFRJ.
       </p>
     </div>
 
@@ -969,7 +967,6 @@
             <div class="track-from">Dobardan! · 1992 · #36 na B92 Top 100</div>
           </div>
           <span class="track-len">3:24</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">02</span>
@@ -978,7 +975,6 @@
             <div class="track-from">Prolećni dan · 1995</div>
           </div>
           <span class="track-len">4:11</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">03</span>
@@ -987,7 +983,6 @@
             <div class="track-from">Prolećni dan · 1995 · Radio 202 — 60 najboljih PGP pesama</div>
           </div>
           <span class="track-len">3:58</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">04</span>
@@ -996,7 +991,6 @@
             <div class="track-from">Dobardan! · 1992</div>
           </div>
           <span class="track-len">3:42</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">05</span>
@@ -1005,7 +999,6 @@
             <div class="track-from">Prolećni dan · 1995</div>
           </div>
           <span class="track-len">3:33</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">06</span>
@@ -1014,7 +1007,6 @@
             <div class="track-from">Dobardan! · 1992</div>
           </div>
           <span class="track-len">3:18</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">07</span>
@@ -1023,7 +1015,6 @@
             <div class="track-from">Singl · 2013 · 25 godina benda</div>
           </div>
           <span class="track-len">4:02</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
         <li class="track">
           <span class="track-num">08</span>
@@ -1032,15 +1023,12 @@
             <div class="track-from">Singl · 2017</div>
           </div>
           <span class="track-len">3:47</span>
-          <span class="track-play"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1.5v7l6-3.5z" fill="currentColor"/></svg></span>
         </li>
       </ol>
 
       <div class="streams">
-        <a class="stream" href="https://bfan.link/ustani-slaj-stoune" target="_blank" rel="noopener"><span>Spotify</span><span class="arrow">↗</span></a>
-        <a class="stream" href="https://bfan.link/ustani-slaj-stoune" target="_blank" rel="noopener"><span>Apple Music</span><span class="arrow">↗</span></a>
-        <a class="stream" href="https://bfan.link/ustani-slaj-stoune" target="_blank" rel="noopener"><span>Deezer</span><span class="arrow">↗</span></a>
-        <a class="stream" href="https://www.youtube.com/@decalosihmuzicara" target="_blank" rel="noopener"><span>YouTube Music</span><span class="arrow">↗</span></a>
+        <a class="stream" href="https://bfan.link/ustani-slaj-stoune" target="_blank" rel="noopener"><span>Novi album · sve platforme</span><span class="arrow">↗</span></a>
+        <a class="stream" href="https://www.youtube.com/@decalosihmuzicara" target="_blank" rel="noopener"><span>YouTube</span><span class="arrow">↗</span></a>
         <a class="stream" href="https://www.discogs.com/artist/1098524-Deca-Lo%C5%A1ih-Muzi%C4%8Dara" target="_blank" rel="noopener"><span>Discogs</span><span class="arrow">↗</span></a>
       </div>
     </div>
@@ -1114,10 +1102,6 @@
             <div class="cb-label">Email</div>
             <div class="cb-value"><a href="mailto:decalosihmuzicara@gmail.com">decalosihmuzicara@gmail.com</a></div>
           </div>
-          <div>
-            <div class="cb-label">Web</div>
-            <div class="cb-value"><a href="http://www.decalosihmuzicara.com">decalosihmuzicara.com</a></div>
-          </div>
         </div>
       </div>
 
@@ -1136,7 +1120,7 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="footer-mark">
-    <img src="assets/logo.png" alt="DLM" />
+    <img src="assets/logo.webp" alt="DLM" width="180" height="104" loading="lazy" />
   </div>
   <div class="footer-meta">
     <div>© 1988–2026 Deca Loših Muzičara · Beograd, Srbija</div>
