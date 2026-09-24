@@ -28,7 +28,7 @@
     --bg-3: #1c1916;
     --fg: #f4efe6;
     --fg-dim: #a8a097;
-    --fg-mute: #6b645c;
+    --fg-mute: #8a8279;
     --line: rgba(244, 239, 230, 0.08);
     --line-2: rgba(244, 239, 230, 0.14);
     --accent: #e63027;
@@ -67,6 +67,14 @@
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
+
+  .skip-link {
+    position: absolute; left: var(--pad); top: -100px; z-index: 200;
+    padding: 12px 18px;
+    background: var(--accent); color: #fff;
+    font-weight: 600; text-decoration: none;
+  }
+  .skip-link:focus { top: 12px; }
 
   /* ---------- HEADER ---------- */
   .topbar {
@@ -303,6 +311,13 @@
     letter-spacing: -0.005em;
   }
   .s-title .accent { color: var(--accent); }
+  .section__lead {
+    margin: 0 0 clamp(28px, 4vw, 48px);
+    padding-left: 16px;
+    border-left: 2px solid var(--accent);
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--fg-dim);
+  }
   .s-aside {
     max-width: 360px;
     color: var(--fg-dim);
@@ -759,6 +774,7 @@
 </style>
 </head>
 <body class="grain">
+<a class="skip-link" href="#top">Preskoči na sadržaj</a>
 
 <!-- ============ HEADER ============ -->
 <header class="topbar">
@@ -783,7 +799,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-photo">
-    <img src="assets/hero-image.jpg" alt="DLM live" />
+    <img src="assets/hero-image.jpg" alt="Deca Loših Muzičara sviraju na otvorenoj bini po danu, publika ispred bine podiže ruke" />
   </div>
   <div class="hero-inner">
     <div class="hero-eyebrow">
