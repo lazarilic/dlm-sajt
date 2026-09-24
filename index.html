@@ -21,6 +21,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "@id": "https://www.decalosihmuzicara.com/#band",
+  "name": "Deca Loših Muzičara",
+  "alternateName": "DLM",
+  "url": "https://www.decalosihmuzicara.com/",
+  "logo": "https://www.decalosihmuzicara.com/assets/favicon-512.png",
+  "image": "https://www.decalosihmuzicara.com/assets/hero-image.jpg",
+  "genre": ["Funk rock", "Rock"],
+  "foundingDate": "1988",
+  "foundingLocation": { "@type": "Place", "name": "Beograd, Srbija" },
+  "sameAs": [
+    "https://www.instagram.com/decalosihmuzicara/",
+    "https://www.facebook.com/DLM.DecaLosihMuzicara",
+    "https://www.youtube.com/@decalosihmuzicara",
+    "https://www.discogs.com/artist/1098524-Deca-Lo%C5%A1ih-Muzi%C4%8Dara"
+  ],
+  "album": [
+    { "@type": "MusicAlbum", "name": "Dobardan!", "datePublished": "1992" },
+    { "@type": "MusicAlbum", "name": "Prolećni dan", "datePublished": "1995" },
+    { "@type": "MusicAlbum", "name": "Virus", "datePublished": "1998" },
+    { "@type": "MusicAlbum", "name": "...gde cveta samsung žut", "datePublished": "2005" },
+    { "@type": "MusicAlbum", "name": "Ustani Slaj Stoune, Srbija te zove", "datePublished": "2025" }
+  ]
+}
+</script>
 <style>
   :root {
     --bg: #0a0908;
@@ -1151,6 +1179,7 @@ async function loadGigs() {
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   renderMarquee(upcoming, past);
+  renderEventsLd(upcoming);
 
   const showsList = document.getElementById('shows-list');
   if (upcoming.length === 0) {
@@ -1197,6 +1226,34 @@ async function loadGigs() {
       <span class="ai-name">${g.city}${g.venue ? ' · ' + g.venue : ''}</span>
       <span></span>
     </div>`).join('');
+}
+
+// Google reads JSON-LD added by JS, so upcoming gigs come straight from gigs.json.
+function renderEventsLd(upcoming) {
+  if (!upcoming.length) return;
+  const events = upcoming.map(g => ({
+    '@type': 'MusicEvent',
+    name: `Deca Loših Muzičara, ${g.city}`,
+    startDate: g.date,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: g.venue || g.city,
+      address: { '@type': 'PostalAddress', addressLocality: g.city }
+    },
+    image: 'https://www.decalosihmuzicara.com/assets/hero-image.jpg',
+    performer: {
+      '@type': 'MusicGroup',
+      '@id': 'https://www.decalosihmuzicara.com/#band',
+      name: 'Deca Loših Muzičara'
+    },
+    ...(g.ticketsUrl && { offers: { '@type': 'Offer', url: g.ticketsUrl } })
+  }));
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': events });
+  document.head.appendChild(script);
 }
 
 // Upcoming cities first, then recent past ones, 8 total (up to 10 if there are more upcoming).
