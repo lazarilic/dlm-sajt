@@ -220,7 +220,6 @@
   }
   .marquee-track {
     display: flex;
-    gap: 56px;
     white-space: nowrap;
     animation: scroll 38s linear infinite;
     font-family: var(--font-display);
@@ -229,7 +228,9 @@
     letter-spacing: 0.02em;
     color: var(--fg);
   }
+  .marquee-track > * { margin-right: 56px; }
   .marquee-track span:nth-child(even) { color: var(--accent); }
+  .marquee-track .up { color: var(--accent); }
   .marquee-track .sep {
     color: var(--fg-mute);
     font-family: var(--font-body);
@@ -770,23 +771,23 @@
 
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
+  <div class="marquee-track" id="marquee-track">
     <span>Beograd</span><span class="sep">/</span>
-    <span>Subotica</span><span class="sep">/</span>
-    <span>Strazbur</span><span class="sep">/</span>
     <span>Novi Sad</span><span class="sep">/</span>
+    <span>Požarevac</span><span class="sep">/</span>
+    <span>Podgorica</span><span class="sep">/</span>
+    <span>Pančevo</span><span class="sep">/</span>
+    <span>Subotica</span><span class="sep">/</span>
     <span>Niš</span><span class="sep">/</span>
-    <span>Vračar Rocks</span><span class="sep">/</span>
-    <span>Dom Omladine</span><span class="sep">/</span>
-    <span>Parobrod</span><span class="sep">/</span>
+    <span>Strazbur</span><span class="sep">/</span>
     <span>Beograd</span><span class="sep">/</span>
-    <span>Subotica</span><span class="sep">/</span>
-    <span>Strazbur</span><span class="sep">/</span>
     <span>Novi Sad</span><span class="sep">/</span>
+    <span>Požarevac</span><span class="sep">/</span>
+    <span>Podgorica</span><span class="sep">/</span>
+    <span>Pančevo</span><span class="sep">/</span>
+    <span>Subotica</span><span class="sep">/</span>
     <span>Niš</span><span class="sep">/</span>
-    <span>Vračar Rocks</span><span class="sep">/</span>
-    <span>Dom Omladine</span><span class="sep">/</span>
-    <span>Parobrod</span><span class="sep">/</span>
+    <span>Strazbur</span><span class="sep">/</span>
   </div>
 </div>
 
@@ -1097,6 +1098,8 @@ async function loadGigs() {
     .filter(g => new Date(g.date + 'T00:00:00') < today)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
+  renderMarquee(upcoming, past);
+
   const showsList = document.getElementById('shows-list');
   if (upcoming.length === 0) {
     showsList.innerHTML = '<p style="color:var(--fg-mute);font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;padding:32px 0;">Najlepši je onaj dan kad se budim nasmejan. <a href="https://www.instagram.com/decalosihmuzicara/" target="_blank" rel="noopener" style="color:var(--fg-dim);">Pratite nas</a> za sledeći termin.</p>';
@@ -1142,6 +1145,32 @@ async function loadGigs() {
       <span class="ai-name">${g.city}${g.venue ? ' · ' + g.venue : ''}</span>
       <span></span>
     </div>`).join('');
+}
+
+// Upcoming cities first, then recent past ones, 8 total (up to 10 if there are more upcoming).
+function renderMarquee(upcoming, past) {
+  const track = document.getElementById('marquee-track');
+  const seen = new Set();
+  const items = [];
+  const add = (g, up) => {
+    const city = (g.city || '').trim();
+    if (!city || seen.has(city)) return;
+    seen.add(city);
+    items.push({ city, up });
+  };
+  upcoming.forEach(g => items.length < 10 && add(g, true));
+  past.forEach(g => items.length < 8 && add(g, false));
+  if (!track || items.length < 5) return;
+
+  // The loop scrolls by -50%, so the track holds the same set twice.
+  // Each half must also be wider than the screen, or a gap shows before the loop restarts.
+  const set = items.map(i => `<span${i.up ? ' class="up"' : ''}>${i.city}</span><span class="sep">/</span>`).join('');
+  let half = set;
+  track.innerHTML = half + half;
+  while (track.scrollWidth / 2 < window.innerWidth && half.length < set.length * 6) {
+    half += set;
+    track.innerHTML = half + half;
+  }
 }
 
 loadGigs();
