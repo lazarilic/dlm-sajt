@@ -159,12 +159,6 @@
     -webkit-text-stroke: 2px var(--fg);
     color: transparent;
   }
-  .hero-sub {
-    margin: 28px 0 0;
-    max-width: 540px;
-    font-size: clamp(16px, 1.5vw, 19px);
-    color: var(--fg-dim);
-  }
   .hero-ctas { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
 
   .btn {
@@ -283,11 +277,8 @@
   /* ---------- ABOUT ---------- */
   .about-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: clamp(40px, 6vw, 100px);
-    align-items: start;
+    grid-template-columns: 1fr;
   }
-  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
   .about-lead {
     font-family: var(--font-display);
     font-size: clamp(28px, 3.5vw, 44px);
@@ -298,29 +289,6 @@
   }
   .about-lead .accent { color: var(--accent); }
   .about-body p { color: var(--fg-dim); margin: 0 0 16px; max-width: 56ch; }
-  .members {
-    display: grid; gap: 14px;
-    border-left: 1px solid var(--line-2);
-    padding-left: 28px;
-  }
-  .member {
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 14px;
-    padding: 6px 0;
-  }
-  .member-name {
-    font-family: var(--font-display);
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .member-role {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--fg-mute);
-  }
 
   /* ---------- KONCERTI ---------- */
   .shows { display: grid; gap: 0; }
@@ -780,19 +748,13 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <span class="tick"></span>
-      <span>Funk Rock · Beograd · Od 1988</span>
+      <span>Funk rock bend iz Beograda</span>
     </div>
     <h1 class="hero-title">
       Deca<br />
       <span class="outline">Loših</span><br />
       <span class="accent">Muzičara</span>
     </h1>
-    <p class="hero-sub">
-      <em>Hajde mala, nismo deca<br />
-      pusti me da pitam zeca<br />
-      reci zeko, dobri zeko<br />
-      dođe mi da ljubim nebo</em>
-    </p>
     <div class="hero-ctas">
       <a class="btn" href="#muzika">
         <span>Poslušaj</span>
@@ -855,20 +817,6 @@
           Godine 2025. bend izdaje peti studijski album <em style="color: var(--fg); font-style: normal;">Ustani Slaj Stoune, Srbija te zove</em> — prvi u dvadeset godina, za izdavačku kuću Midget Unit Records.
         </p>
       </div>
-
-      <div class="members">
-        <div class="member"><span class="member-name">Nenad Petrović</span><span class="member-role">Vokal</span></div>
-        <div class="member"><span class="member-name">Zoran Živković "Žika"</span><span class="member-role">Bas</span></div>
-        <div class="member"><span class="member-name">Zoran Milivojević "Mikac"</span><span class="member-role">Bubnjevi</span></div>
-        <div class="member"><span class="member-name">Lazar Ilić</span><span class="member-role">Gitara</span></div>
-        <div class="member" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line-2);">
-          <span class="member-name" style="font-size:13px;color:var(--fg-mute);">Duvačka sekcija</span>
-        </div>
-        <div class="member"><span class="member-name">Miloš Remenjak</span><span class="member-role">Saksofon</span></div>
-        <div class="member"><span class="member-name">Jakov Firez</span><span class="member-role">Truba</span></div>
-        <div class="member"><span class="member-name">Borislav "Bora" Veličković</span><span class="member-role">Truba</span></div>
-        <div class="member"><span class="member-name">Mihajlo Bogosavljević</span><span class="member-role">Trombon</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -879,7 +827,7 @@
     <div class="s-head">
       <div>
         <div class="s-num">02 / Koncerti</div>
-        <h2 class="s-title">Bina <span class="accent">čeka.</span></h2>
+        <h2 class="s-title">Koncerti<span class="accent">.</span></h2>
       </div>
     </div>
 
@@ -1136,13 +1084,6 @@ function formatDate(dateStr) {
   return `${dd}.${mm}.${yyyy}`;
 }
 
-function playedLabel(n) {
-  const last = n % 10, lastTwo = n % 100;
-  if (last === 1 && lastTwo !== 11) return 'odsviran';
-  if (last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14)) return 'odsvirana';
-  return 'odsviranih';
-}
-
 async function loadGigs() {
   let data;
   try {
@@ -1201,7 +1142,8 @@ async function loadGigs() {
 
   const archiveSummary = document.getElementById('archive-summary');
   const archiveList = document.getElementById('archive-list');
-  archiveSummary.textContent = `Arhiva koncerata · ${past.length} ${playedLabel(past.length)}`;
+  const firstYear = past.length ? past[past.length - 1].date.slice(0, 4) : null;
+  archiveSummary.textContent = firstYear ? `Arhiva koncerata · od ${firstYear}.` : 'Arhiva koncerata';
   archiveList.innerHTML = past.map(g => `
     <div class="archive-item">
       <span>${formatDate(g.date)}</span>
