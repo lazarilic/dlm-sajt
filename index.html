@@ -476,6 +476,8 @@
     transition: color .15s;
   }
   .show-cta:hover { color: var(--fg); }
+  .show-event { color: var(--fg-dim); }
+  .show-event:hover { color: var(--fg); }
   @media (max-width: 720px) {
     .show { grid-template-columns: 64px minmax(0, 1fr); row-gap: 12px; padding: 24px 16px; }
     .show-date .day { font-size: 36px; }
@@ -1215,6 +1217,13 @@ function safeUrl(value) {
   }
 }
 
+// Ticket sellers report by utm_source, so site sales stay apart from ad traffic.
+function withUtm(value) {
+  const url = new URL(value);
+  url.searchParams.set('utm_source', 'sajt');
+  return url.toString();
+}
+
 async function loadGigs() {
   let data;
   try {
@@ -1247,7 +1256,10 @@ async function loadGigs() {
       const d = new Date(g.date + 'T00:00:00');
       const day = String(d.getDate()).padStart(2, '0');
       const isNext = i === 0;
-      const tickets = safeUrl(g.ticketsUrl);
+      const tickets = safeUrl(g.ticketsUrl) && withUtm(g.ticketsUrl);
+      const event = safeUrl(g.eventUrl);
+      const meta = [g.time, g.notes].filter(Boolean).map(esc);
+      if (event) meta.push(`<a class="show-event" href="${esc(event)}" target="_blank" rel="noopener">FB event</a>`);
       return `
         <article class="show${isNext ? ' next' : ''}">
           <div class="show-date"><span class="day">${day}</span><span class="mo"><span>${MONTHS_SR[d.getMonth()]}</span><span class="dot"> · </span><span>${DAYS_SR[d.getDay()]}</span></span></div>
@@ -1255,7 +1267,7 @@ async function loadGigs() {
             ${isNext ? '<div class="show-label">Sledeća svirka</div>' : ''}
             <div class="show-name">${esc(g.city)}</div>
             ${g.venue ? `<div class="show-venue">${esc(g.venue)}</div>` : ''}
-            ${g.notes ? `<div class="show-meta">${esc(g.notes)}</div>` : ''}
+            ${meta.length ? `<div class="show-meta">${meta.join(' · ')}</div>` : ''}
           </div>
           ${tickets
             ? `<a class="show-cta" href="${esc(tickets)}" target="_blank" rel="noopener">Karte →</a>`
@@ -1314,7 +1326,7 @@ function renderEventsLd(upcoming) {
   const events = upcoming.map(g => ({
     '@type': 'MusicEvent',
     name: `Deca Loših Muzičara, ${g.city}`,
-    startDate: g.date,
+    startDate: g.time ? `${g.date}T${g.time}` : g.date,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     location: {

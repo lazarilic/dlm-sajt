@@ -11,8 +11,8 @@
     { "date": "2026-07-04", "city": "Zrenjanin", "venue": "Lion Pub", "notes": "" },
     { "date": "2026-09-12", "city": "Ruma", "venue": "Bonavia", "notes": "" },
     { "date": "2026-10-03", "city": "Smederevska Palanka", "venue": "Punk Rock Cafe", "notes": "" },
-    { "date": "2026-10-29", "city": "Niš", "venue": "Feedback", "notes": "" },
-    { "date": "2026-10-30", "city": "Niš", "venue": "Feedback", "notes": "" },
+    { "date": "2026-10-29", "time": "21:30", "city": "Niš", "venue": "Feedback", "notes": "pretprodaja 1.800\u00a0din", "ticketsUrl": "https://app.bilet.rs/show/228", "eventUrl": "https://www.facebook.com/events/1098874245980537" },
+    { "date": "2026-10-30", "time": "21:30", "city": "Niš", "venue": "Feedback", "notes": "pretprodaja 1.800\u00a0din", "ticketsUrl": "https://app.bilet.rs/show/229", "eventUrl": "https://www.facebook.com/events/1098874245980537" },
     { "date": "2026-11-07", "city": "Beograd", "venue": "Rakija Fest", "notes": "" },
 
     { "date": "2025-06-07", "city": "Požarevac", "venue": "klub KB", "notes": "" },
